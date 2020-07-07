@@ -12,3 +12,32 @@ body {
   color: #3f3f3f;
   overflow-y: scroll;
 }
+
+a {
+  color: #67c8dc;
+}
+
+a:hover {
+  color: #46b0c6;
+  text-decoration: none;
+}
+
+.navbar .navbar-nav .nav-link {
+  font-weight: 500;
+}
+
+.img-rounded-corners {
+  border-radius: 10px;
+}
+
+.dropdown-menu {
+  border: 0;
+  box-shadow: 0px 13px 26px rgb(109, 184, 241, 0.16);
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #67c8dc;
+}
