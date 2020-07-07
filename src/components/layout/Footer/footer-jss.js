@@ -16,6 +16,7 @@ const useStyles = createUseStyles({
     '& .message': {
       maxWidth: '680px',
       color: colors['text-gray-600'],
+      padding: '0 15px',
     },
     '& .Copyright': {
       color: colors['text-gray-700'],

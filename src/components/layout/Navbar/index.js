@@ -143,7 +143,7 @@ const Navbar = () => {
           </ul>
 
           {/* Check if logged in */}
-          <ul className='navbar-nav'>{true ? userMenu : guestMenu}</ul>
+          <ul className='navbar-nav'>{false ? userMenu : guestMenu}</ul>
         </div>
       </div>
     </nav>
