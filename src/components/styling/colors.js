@@ -1,6 +1,6 @@
 export default {
   primary: '#67C8DC',
-  'primary-fill-hover': '#46B0C6',
+  'primary-hover': '#46B0C6',
   danger: '#dc5f5f',
   request: '#9340e6',
   'text-transparent': 'transparent',

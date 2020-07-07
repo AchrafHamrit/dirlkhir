@@ -8,6 +8,8 @@ import useStyles from './alerts-jss';
 const Alerts = () => {
   const classes = useStyles();
 
+  return '';
+
   return (
     <div className={`${classes.alert} card-shadow text-center`}>
       <FontAwesomeIcon className='icon mr-2' icon={faInfoCircle} />
