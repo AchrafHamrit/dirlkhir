@@ -6,7 +6,6 @@ import {
   faSignOutAlt,
   faEnvelope,
   faUser,
-  faUsers,
   faFileAlt,
   faCheck,
 } from '@fortawesome/free-solid-svg-icons';
