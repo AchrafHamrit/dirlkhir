@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+// Actions
+import { register, clearErrors } from '../../redux/actions/authActions';
+import { setAlert } from '../../redux/actions/alertActions';
+
+// Components
+import Spinner from '../layout/Spinner';
 
 import useStyles from './auth-jss';
 
 const Register = (props) => {
+  const {
+    isAuthenticated,
+    error,
+    loading,
+    register,
+    clearErrors,
+    setAlert,
+  } = props;
+
   const classes = useStyles();
 
   const [user, setUser] = useState({
@@ -18,16 +36,44 @@ const Register = (props) => {
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/');
+    }
+
+    // eslint-disable-next-line
+  }, [isAuthenticated, props.history]);
+
+  useEffect(() => {
+    if (error) {
+      if (typeof error === 'object') {
+        if (error.errors && error.errors.length > 0) {
+          error.errors.forEach((err) => {
+            setAlert(err.msg);
+            clearErrors();
+          });
+        }
+      } else {
+        setAlert(error);
+        clearErrors();
+      }
+    }
+
+    // eslint-disable-next-line
+  }, [error]);
+
+  const onSubmit = async (e) => {
     e.preventDefault();
+
     if (username === '' || phone === '' || email === '' || password === '') {
-      //setAlert('Please enter all fields');
+      setAlert('Please enter all fields');
     } else if (password.length < 6) {
-      //setAlert('Password must contain at least 6 characters');
+      setAlert('Password must contain at least 6 characters');
     } else if (password !== password2) {
-      //setAlert('Passwords do not match');
+      setAlert('Passwords do not match');
     } else {
       // Register function
+      await register({ username, phone, email, password });
     }
   };
 
@@ -45,7 +91,7 @@ const Register = (props) => {
             value={username}
             placeholder='Username'
             onChange={onChange}
-            required
+            // required
           />
         </div>
 
@@ -57,7 +103,7 @@ const Register = (props) => {
             value={phone}
             placeholder='Phone'
             onChange={onChange}
-            required
+            // required
           />
         </div>
 
@@ -69,7 +115,7 @@ const Register = (props) => {
             value={email}
             placeholder='Email'
             onChange={onChange}
-            required
+            // required
           />
         </div>
 
@@ -81,7 +127,7 @@ const Register = (props) => {
             value={password}
             placeholder='Password'
             onChange={onChange}
-            required
+            // required
           />
         </div>
 
@@ -93,11 +139,19 @@ const Register = (props) => {
             value={password2}
             placeholder='Password confirmation'
             onChange={onChange}
-            required
+            // required
           />
         </div>
 
-        <input type='submit' value='Register' className='button-primary mt-3' />
+        {loading ? (
+          <Spinner />
+        ) : (
+          <input
+            type='submit'
+            value='Register'
+            className='button-primary mt-3'
+          />
+        )}
       </form>
 
       <p className='form-link mt-3'>
@@ -110,4 +164,20 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  register: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
+};
+
+const mapSateToProps = (state) => ({
+  error: state.auth.error,
+  isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading,
+});
+
+export default connect(mapSateToProps, { register, clearErrors, setAlert })(
+  Register
+);

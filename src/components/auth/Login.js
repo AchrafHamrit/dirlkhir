@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+// Actions
+import { login, clearErrors } from '../../redux/actions/authActions';
+import { setAlert } from '../../redux/actions/alertActions';
+
+// Components
+import Spinner from '../layout/Spinner';
 
 import useStyles from './auth-jss';
 
 const Login = (props) => {
+  const {
+    isAuthenticated,
+    error,
+    loading,
+    login,
+    clearErrors,
+    setAlert,
+  } = props;
+
   const classes = useStyles();
 
   const [user, setUser] = useState({
@@ -15,13 +33,30 @@ const Login = (props) => {
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/');
+    }
+
+    // eslint-disable-next-line
+  }, [isAuthenticated, props.history]);
+
+  useEffect(() => {
+    if (error) {
+      setAlert(error);
+      clearErrors();
+    }
+
+    // eslint-disable-next-line
+  }, [error]);
+
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (username === '' || password === '') {
-      // Set Alert
+      setAlert('Please enter all fields');
     } else {
-      // Login function
+      login({ username, password });
     }
   };
 
@@ -55,7 +90,11 @@ const Login = (props) => {
           />
         </div>
 
-        <input type='submit' value='Login' className='button-primary mt-3' />
+        {loading ? (
+          <Spinner />
+        ) : (
+          <input type='submit' value='Login' className='button-primary mt-3' />
+        )}
       </form>
 
       <p className='form-link mt-3'>
@@ -68,4 +107,18 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  login: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
+};
+
+const mapSateToProps = (state) => ({
+  error: state.auth.error,
+  isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading,
+});
+
+export default connect(mapSateToProps, { login, clearErrors, setAlert })(Login);
