@@ -8,12 +8,20 @@ import {
   LOGOUT,
   AUTH_ERROR,
   CLEAR_ERRORS,
-} from '../actions/types';
+  PROFILE_LOADED,
+  SET_LOADING_PROFILE,
+  UPDATE_PROFILE,
+  UPDATE_PASSWORD,
+  GET_BLOOD_DONORS,
+  PROFILE_ERROR,
+  BLOOD_DONORS_ERROR,
+} from '../types';
 
 const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
-  loading: false,
+  loading: true,
+  loading_profile: true,
   user: null,
   error: null,
 };
@@ -57,6 +65,33 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+      };
+
+    case PROFILE_LOADED:
+      return {
+        ...state,
+        loading_profile: false,
+        user: action.payload,
+      };
+
+    case SET_LOADING_PROFILE:
+      return {
+        ...state,
+        loading_profile: true,
+      };
+
+    case UPDATE_PROFILE:
+    case UPDATE_PASSWORD:
+      return {
+        ...state,
+        loading_profile: false,
+      };
+
+    case PROFILE_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        loading_profile: false,
       };
 
     case CLEAR_ERRORS:

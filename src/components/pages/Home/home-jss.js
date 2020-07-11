@@ -18,7 +18,6 @@ const useStyles = createUseStyles({
       fontWeight: '500',
       maxWidth: '480px',
     },
-
     '& .button-primary': {
       ...BUTTON_PRIMARY,
       borderRadius: '22px',

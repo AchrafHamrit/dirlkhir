@@ -3,7 +3,11 @@ import React, { useState, useEffect } from 'react';
 import Ad1 from '../../../images/ad1.png';
 import Ad2 from '../../../images/ad2.png';
 
+import useStyles from './sidebar-jss';
+
 const Sidebar = () => {
+  const classes = useStyles();
+
   const [ad, setAd] = useState(Ad1);
 
   const changeAd = () => {
@@ -27,7 +31,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div>
+    <div className={classes.sidebar}>
       <h6 className='sidebar-title text-right'>Sponsored ads</h6>
       <div className='mt-3'>
         <img className='img img-fluid' src={ad} alt='Ad' />
