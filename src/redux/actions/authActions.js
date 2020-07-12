@@ -27,10 +27,12 @@ import { URL as Api } from './api';
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
+  } else {
+    dispatch({
+      type: AUTH_ERROR,
+    });
+    return;
   }
-  // else {
-  //   return;
-  // }
 
   try {
     dispatch(setLoading());

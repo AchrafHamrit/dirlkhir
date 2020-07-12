@@ -16,6 +16,7 @@ import Home from './components/pages/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Profile from './components/pages/Profile';
+import RequestsPage from './components/pages/posts/requests/RequestsPage';
 
 // Routes
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -35,6 +36,8 @@ function App() {
               <Route exact path='/login' component={Login} />
               <Route exact path='/register' component={Register} />
               <PrivateRoute exact path='/profile' component={Profile} />
+
+              <Route exact path='/requests' component={RequestsPage} />
               <Route component={Home} />
             </Switch>
           </div>

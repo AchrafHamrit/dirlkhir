@@ -30,6 +30,8 @@ const Profile = (props) => {
     loading_profile,
     getStates,
     getStateCities,
+    loading_states,
+    loading_state_cities,
     clearCities,
     clearErrors,
     setAlert,
@@ -193,9 +195,7 @@ const Profile = (props) => {
   return (
     <div className={`${classes.page} card-shadow text-center`}>
       <h3 className='title'>Profile</h3>
-      <h6 className='subtitle'>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-      </h6>
+      <h6 className='subtitle'>Change your phone number & other info</h6>
 
       <div className='content mt-5'>
         <div className='row'>
@@ -282,14 +282,20 @@ const Profile = (props) => {
                           onChange={onChangeBasic}
                           className='custom-select input-select input-text'
                         >
-                          <option value='0'>Select a wilaya</option>
-                          {wilayas !== null &&
-                            wilayas.length > 0 &&
-                            wilayas.map((wilaya) => (
-                              <option key={wilaya.code} value={wilaya.code}>
-                                {wilaya.label}
-                              </option>
-                            ))}
+                          {loading_states ? (
+                            <option value='0'>Loading...</option>
+                          ) : (
+                            <>
+                              <option value='0'>Select a wilaya</option>
+                              {wilayas !== null &&
+                                wilayas.length > 0 &&
+                                wilayas.map((wilaya) => (
+                                  <option key={wilaya.code} value={wilaya.code}>
+                                    {wilaya.label}
+                                  </option>
+                                ))}
+                            </>
+                          )}
                         </select>
                       </div>
 
@@ -304,14 +310,20 @@ const Profile = (props) => {
                           onChange={onChangeBasic}
                           className='custom-select input-select input-text'
                         >
-                          <option value='0'>Select a city</option>
-                          {cities !== null &&
-                            cities.length > 0 &&
-                            cities.map((city) => (
-                              <option key={city.code} value={city.id}>
-                                {city.label}
-                              </option>
-                            ))}
+                          {loading_state_cities ? (
+                            <option value='0'>Loading...</option>
+                          ) : (
+                            <>
+                              <option value='0'>Select a city</option>
+                              {cities !== null &&
+                                cities.length > 0 &&
+                                cities.map((city) => (
+                                  <option key={city.code} value={city.id}>
+                                    {city.label}
+                                  </option>
+                                ))}
+                            </>
+                          )}
                         </select>
                       </div>
 
@@ -487,6 +499,8 @@ const mapSateToProps = (state) => ({
   loading_profile: state.auth.loading_profile,
   wilayas: state.locations.states,
   cities: state.locations.cities,
+  loading_states: state.locations.loading_states,
+  loading_state_cities: state.locations.loading_state_cities,
 });
 
 export default connect(mapSateToProps, {

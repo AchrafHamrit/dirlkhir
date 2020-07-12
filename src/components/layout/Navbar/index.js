@@ -24,7 +24,8 @@ const Navbar = (props) => {
   const { isAuthenticated, user, logout, loadUser } = props;
 
   useEffect(() => {
-    if (localStorage.token) loadUser();
+    // if (localStorage.token)
+    loadUser();
 
     // eslint-disable-next-line
   }, []);
