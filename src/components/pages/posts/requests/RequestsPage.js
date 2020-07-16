@@ -226,9 +226,6 @@ const Requests = (props) => {
                   {requests.length < 1 ? (
                     <div className='no-requests mt-5'>
                       <h5>No requests found!</h5>
-                      <p>
-                        Remember to check the spelling of the keyword entered.
-                      </p>
                     </div>
                   ) : (
                     requests.map((post) => (

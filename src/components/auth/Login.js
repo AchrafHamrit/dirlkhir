@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 // Actions
 import { login, clearErrors } from '../../redux/actions/authActions';
 import { setAlert } from '../../redux/actions/alertActions';
+
+// Utils
+import { WEBSITE_NAME } from '../../utils/websiteData';
 
 // Components
 import Spinner from '../layout/Spinner';
@@ -61,49 +65,58 @@ const Login = (props) => {
   };
 
   return (
-    <div className={`${classes.root} card-shadow text-center`}>
-      <h3 className='title'>Sign in</h3>
-      <h6 className='subtitle'>Start helping or getting help.</h6>
+    <>
+      <Helmet>
+        <title>{`${WEBSITE_NAME} | Login`}</title>
+      </Helmet>
+      <div className={`${classes.root} card-shadow text-center`}>
+        <h3 className='title'>Sign in</h3>
+        <h6 className='subtitle'>Start helping or getting help.</h6>
 
-      <form className='mt-4' onSubmit={onSubmit}>
-        <div className='form-group'>
-          <input
-            className='input-text'
-            type='text'
-            name='username'
-            value={username}
-            placeholder='Username'
-            onChange={onChange}
-            required
-          />
-        </div>
+        <form className='mt-4' onSubmit={onSubmit}>
+          <div className='form-group'>
+            <input
+              className='input-text'
+              type='text'
+              name='username'
+              value={username}
+              placeholder='Username'
+              onChange={onChange}
+              required
+            />
+          </div>
 
-        <div className='form-group'>
-          <input
-            className='input-text'
-            type='password'
-            name='password'
-            value={password}
-            placeholder='Password'
-            onChange={onChange}
-            required
-          />
-        </div>
+          <div className='form-group'>
+            <input
+              className='input-text'
+              type='password'
+              name='password'
+              value={password}
+              placeholder='Password'
+              onChange={onChange}
+              required
+            />
+          </div>
 
-        {loading ? (
-          <Spinner />
-        ) : (
-          <input type='submit' value='Login' className='button-primary mt-3' />
-        )}
-      </form>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <input
+              type='submit'
+              value='Login'
+              className='button-primary mt-3'
+            />
+          )}
+        </form>
 
-      <p className='form-link mt-3'>
-        Login Trouble?{' '}
-        <Link to='/login'>
-          <span>Reset password</span>
-        </Link>
-      </p>
-    </div>
+        <p className='form-link mt-3'>
+          Login Trouble?{' '}
+          <Link to='/login'>
+            <span>Reset password</span>
+          </Link>
+        </p>
+      </div>
+    </>
   );
 };
 

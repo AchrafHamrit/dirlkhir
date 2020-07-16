@@ -41,7 +41,7 @@ const Navbar = (props) => {
       <li className='dropdown'>
         <a
           href='#user'
-          className='nav-link dropdown-toggle'
+          className='nav-link dropdown-toggle user-menu'
           data-toggle='dropdown'
           aria-expanded='false'
         >

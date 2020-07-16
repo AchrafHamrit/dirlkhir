@@ -33,6 +33,12 @@ const useStyles = createUseStyles({
       '& .dropdown-toggle::after': {
         display: 'none',
       },
+      '& .user-menu': {
+        color: colors['text-gray-800'],
+        '&:hover': {
+          color: colors['text-gray-900'],
+        },
+      },
     },
     '& .logo': {
       height: '22px',
