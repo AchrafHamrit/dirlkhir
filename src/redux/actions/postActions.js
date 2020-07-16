@@ -10,6 +10,7 @@ import {
   CATEGORIES_ERROR,
   SET_LOADING_POSTS,
   SET_LOADING_CATEGORIES,
+  CLEAR_ERRORS,
 } from '../types';
 
 import { URL as Api } from './api';
@@ -127,4 +128,9 @@ export const setLoadingCategories = () => {
   return {
     type: SET_LOADING_CATEGORIES,
   };
+};
+
+// Clear errors
+export const clearErrors = () => {
+  return { type: CLEAR_ERRORS };
 };

@@ -8,6 +8,7 @@ import {
   CATEGORIES_ERROR,
   SET_LOADING_POSTS,
   SET_LOADING_CATEGORIES,
+  CLEAR_ERRORS,
 } from '../types';
 
 const initialState = {
@@ -82,6 +83,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading_categories: true,
+      };
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
       };
 
     default:

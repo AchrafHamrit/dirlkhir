@@ -12,6 +12,7 @@ import {
   SET_LOADING_PHONE,
   SET_LOADING_MESSAGE,
   SET_LOADING_SEND_MESSAGE,
+  CLEAR_ERRORS,
 } from '../types';
 
 import { URL as Api } from './api';
@@ -59,7 +60,7 @@ export const getConversationById = (id) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: MESSAGE_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.msg || 'Error',
     });
   }
 };
@@ -104,4 +105,9 @@ export const setLoadingMessage = () => {
 // Set loading message to true
 export const setLoadingMessageSend = () => {
   return { type: SET_LOADING_SEND_MESSAGE };
+};
+
+// Clear errors
+export const clearErrors = () => {
+  return { type: CLEAR_ERRORS };
 };

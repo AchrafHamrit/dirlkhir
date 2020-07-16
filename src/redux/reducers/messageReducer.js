@@ -10,6 +10,7 @@ import {
   SET_LOADING_PHONE,
   SET_LOADING_MESSAGE,
   SET_LOADING_SEND_MESSAGE,
+  CLEAR_ERRORS,
 } from '../types';
 
 const initialState = {
@@ -95,6 +96,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading_send: true,
+      };
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
       };
 
     default:

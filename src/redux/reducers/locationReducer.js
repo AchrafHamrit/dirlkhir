@@ -5,6 +5,7 @@ import {
   SET_LOADING_STATES,
   SET_LOADING_STATE_CITIES,
   LOCATION_ERROR,
+  CLEAR_ERRORS,
 } from '../types';
 
 const initialState = {
@@ -53,6 +54,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
       };
 
     default:

@@ -7,6 +7,7 @@ import {
   SET_LOADING_STATES,
   SET_LOADING_STATE_CITIES,
   LOCATION_ERROR,
+  CLEAR_ERRORS,
 } from '../types';
 
 import { URL as Api } from './api';
@@ -68,4 +69,9 @@ export const setLoadingStateCities = () => {
   return {
     type: SET_LOADING_STATE_CITIES,
   };
+};
+
+// Clear errors
+export const clearErrors = () => {
+  return { type: CLEAR_ERRORS };
 };

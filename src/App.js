@@ -18,6 +18,8 @@ import Register from './components/auth/Register';
 import Profile from './components/pages/Profile';
 import RequestsPage from './components/pages/posts/requests/RequestsPage';
 import RequestShow from './components/pages/posts/requests/RequestShow';
+import MessagesShow from './components/pages/messages/MessagesShow';
+import MessagesPage from './components/pages/messages/MessagesPage';
 
 // Routes
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -40,6 +42,13 @@ function App() {
 
               <Route exact path='/requests' component={RequestsPage} />
               <Route exact path='/requests/:id' component={RequestShow} />
+
+              <PrivateRoute
+                exact
+                path='/messages/:id'
+                component={MessagesShow}
+              />
+              <PrivateRoute exact path='/messages' component={MessagesPage} />
 
               <Route component={Home} />
             </Switch>
