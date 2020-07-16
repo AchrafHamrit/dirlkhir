@@ -497,6 +497,7 @@ const Profile = (props) => {
 const mapSateToProps = (state) => ({
   profile: state.auth.user,
   loading_profile: state.auth.loading_profile,
+  error: state.auth.error,
   wilayas: state.locations.states,
   cities: state.locations.cities,
   loading_states: state.locations.loading_states,

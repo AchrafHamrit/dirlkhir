@@ -3,7 +3,7 @@ import colors from '../../styling/colors';
 import {
   CARD_SHADOW,
   BUTTON_PRIMARY,
-  BUTTON_PRIMARY_OUTLINE,
+  BUTTON_TRANSPARENT,
   INPUT_TEXT,
   BUTTON_LIGHT,
   POSTITEM_CARD,
@@ -32,14 +32,9 @@ const useStyles = createUseStyles({
       },
     },
 
-    '& .button-primary': {
-      ...BUTTON_PRIMARY,
-      '&:hover': {
-        background: colors['primary-fill-hover'],
-      },
-    },
-    '& .button-primary-outline': BUTTON_PRIMARY_OUTLINE,
+    '& .button-primary': BUTTON_PRIMARY,
     '& .button-light': BUTTON_LIGHT,
+    '& .button-transparent': BUTTON_TRANSPARENT,
 
     '& .input-select': {
       height: 'auto',
@@ -89,36 +84,37 @@ const useStyles = createUseStyles({
           color: colors['text-gray-900'],
         },
       },
-      '& .details, .description, .pictures': {
+      '& .description': {
+        maxWidth: '700px',
+        fontWeight: 400,
+        color: colors['text-gray-700'],
         '& .subtitle': {
           fontWeight: 600,
-          '& .icon': {
-            color: colors['text-gray-400'],
-            minWidth: '20px',
-          },
         },
-        '& p': {
-          fontWeight: 500,
-          color: colors['text-gray-500'],
-          '& .value': {
-            color: colors['text-gray-700'],
-          },
+      },
+      '& .date': {
+        fontSize: '.9rem',
+        fontWeight: 500,
+        color: colors['text-gray-500'],
+      },
+      '& .pictures': {
+        '& img': {
+          cursor: 'pointer',
         },
       },
       '& .contact-details': {
-        padding: '40px 20px',
         '& .icon': {
           color: colors['text-gray-700'],
           fontSize: '28px',
         },
-      },
-      '& .button-primary': {
-        ...BUTTON_PRIMARY,
-        border: `2px solid ${colors.primary}`,
-        '&:hover': {
-          background: colors['primary-fill-hover'],
-          borderColor: colors['primary-fill-hover'],
+        '& .title': {
+          fontWeight: 600,
+          color: colors['text-gray-700'],
         },
+      },
+      '& .button-primary, & .button-transparent': {
+        padding: '15px 30px !important',
+        borderRadius: '18px',
       },
     },
     '& .add-form': {

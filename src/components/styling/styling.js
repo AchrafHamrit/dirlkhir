@@ -48,6 +48,19 @@ export const BUTTON_GRAY = {
   },
 };
 
+export const BUTTON_TRANSPARENT = {
+  background: 'transparent',
+  color: colors.primary,
+  border: 0,
+  borderRadius: '10px',
+  fontWeight: 600,
+  padding: '8px 20px !important',
+  '&:not([disabled]):hover': {
+    color: colors['primary-hover'],
+    borderColor: colors['primary-hover'],
+  },
+};
+
 export const LINK_PRIMARY = {
   fontWeight: 500,
   color: `${colors['text-gray-900']} !important`,

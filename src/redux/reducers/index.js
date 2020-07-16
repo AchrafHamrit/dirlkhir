@@ -4,10 +4,12 @@ import authReducer from './authReducer';
 import alertReducer from './alertReducer';
 import locationReducer from './locationReducer';
 import postReducer from './postReducer';
+import messageReducer from './messageReducer';
 
 export default combineReducers({
   auth: authReducer,
   alerts: alertReducer,
   locations: locationReducer,
   posts: postReducer,
+  messages: messageReducer,
 });

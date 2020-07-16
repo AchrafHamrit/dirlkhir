@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Utils
 import formatedDate from '../../../utils/formatedDate';
 
 import NoImage from '../../../images/no-image.svg';
