@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
@@ -11,7 +11,6 @@ import {
   approvePost,
   declinePost,
 } from '../../../../redux/actions/postActions';
-import { setAlert } from '../../../../redux/actions/alertActions';
 
 // Utils
 import { WEBSITE_NAME } from '../../../../utils/websiteData';
@@ -66,28 +65,30 @@ const PendingPosts = (props) => {
           ) : (
             <div className='row mt-4'>
               <div className='col-12'>
-                <table className='table text-left'>
-                  <thead>
-                    <tr>
-                      <th scope='col'>#</th>
-                      <th scope='col'>Username</th>
-                      <th scope='col'>Title</th>
-                      <th scope='col'>Category</th>
-                      <th scope='col'>Date</th>
-                      <th scope='col'></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {pending_posts.map((post) => (
-                      <PendingPostItem
-                        approvePost={approvePostHandle}
-                        declinePost={declinePostHandle}
-                        key={post.id}
-                        post={post}
-                      />
-                    ))}
-                  </tbody>
-                </table>
+                <div className='table-responsive'>
+                  <table className='table text-left'>
+                    <thead>
+                      <tr>
+                        <th scope='col'>#</th>
+                        <th scope='col'>Username</th>
+                        <th scope='col'>Title</th>
+                        <th scope='col'>Category</th>
+                        <th scope='col'>Date</th>
+                        <th scope='col'></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {pending_posts.map((post) => (
+                        <PendingPostItem
+                          approvePost={approvePostHandle}
+                          declinePost={declinePostHandle}
+                          key={post.id}
+                          post={post}
+                        />
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           )

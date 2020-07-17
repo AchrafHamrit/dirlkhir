@@ -15,6 +15,7 @@ const useStyles = createUseStyles({
       fontWeight: '400',
     },
     '& .table': {
+      minWidth: '750px',
       '& .link-primary': LINK_PRIMARY,
       '& thead th': {
         fontWeight: '600',

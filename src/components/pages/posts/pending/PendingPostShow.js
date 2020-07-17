@@ -3,12 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faArrowLeft,
-  faMapMarkerAlt,
-  faPhoneAlt,
-  faEnvelope,
-} from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 // Actions
 import { getPendingPostById } from '../../../../redux/actions/postActions';
@@ -56,8 +51,7 @@ const PendingPostShow = (props) => {
     setImage(null);
   };
 
-  const { title, content, wilaya, city, createdAt, images } =
-    pending_post_current || {};
+  const { title, content, createdAt, images } = pending_post_current || {};
 
   return (
     <div>
