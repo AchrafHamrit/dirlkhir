@@ -10,13 +10,17 @@ import {
   GET_PENDING_POST_BY_ID,
   APPROVE_POST,
   DELETE_POST_BY_ADMIN,
+  GET_USER_POSTS,
+  GET_USER_POST_BY_ID,
   POST_ERROR,
   CATEGORIES_ERROR,
   SET_LOADING_POSTS,
   SET_LOADING_CATEGORIES,
   SET_LOADING_PENDING_POSTS,
+  SET_LOADING_USER_POSTS,
   CLEAR_ERRORS,
   PENDING_POST_ERROR,
+  USER_POSTS_ERROR,
 } from '../types';
 
 import { URL as Api } from './api';
@@ -191,6 +195,40 @@ export const declinePost = (id) => async (dispatch) => {
   }
 };
 
+// Get User Posts
+export const getUserPosts = () => async (dispatch) => {
+  try {
+    dispatch(setLoadingUserPosts());
+
+    const res = await axios.get(Api + `/posts/user`);
+
+    dispatch({ type: GET_USER_POSTS, payload: res.data });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: USER_POSTS_ERROR,
+      payload: error.response.msg,
+    });
+  }
+};
+
+// Get User Post by id
+export const getUserPostById = (id) => async (dispatch) => {
+  try {
+    dispatch(setLoadingUserPosts());
+
+    const res = await axios.get(Api + `/posts/user/id/${id}`);
+
+    dispatch({ type: GET_USER_POST_BY_ID, payload: res.data });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: USER_POSTS_ERROR,
+      payload: error.response.msg,
+    });
+  }
+};
+
 // Set loading posts to true
 export const setLoadingPosts = () => {
   return {
@@ -209,6 +247,13 @@ export const setLoadingCategories = () => {
 export const setLoadingPendingPosts = () => {
   return {
     type: SET_LOADING_PENDING_POSTS,
+  };
+};
+
+// Set loading users posts to true
+export const setLoadingUserPosts = () => {
+  return {
+    type: SET_LOADING_USER_POSTS,
   };
 };
 

@@ -125,6 +125,7 @@ const useStyles = createUseStyles({
     },
     '&.user-posts': {
       '& .table': {
+        minWidth: '750px',
         '& thead th': {
           fontWeight: '600',
           fontSize: '15px',

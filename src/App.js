@@ -25,6 +25,8 @@ import MessagesShow from './components/pages/messages/MessagesShow';
 import MessagesPage from './components/pages/messages/MessagesPage';
 import PendingPosts from './components/pages/posts/pending/PendingPosts';
 import PendingPostShow from './components/pages/posts/pending/PendingPostShow';
+import UserPosts from './components/pages/posts/user/UserPosts';
+import UserPostShow from './components/pages/posts/user/UserPostShow';
 
 // Routes
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -59,6 +61,9 @@ function App() {
                 component={MessagesShow}
               />
               <PrivateRoute exact path='/messages' component={MessagesPage} />
+
+              <PrivateRoute exact path='/posts/:id' component={UserPostShow} />
+              <PrivateRoute exact path='/posts' component={UserPosts} />
 
               <AdminRoute
                 exact

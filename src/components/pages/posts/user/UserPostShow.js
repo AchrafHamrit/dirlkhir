@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 // Actions
-import { getPendingPostById } from '../../../../redux/actions/postActions';
+import { getUserPostById } from '../../../../redux/actions/postActions';
 
 // Utils
 import formatedDate from '../../../../utils/formatedDate';
@@ -19,18 +19,18 @@ import DialogImage from '../../../layout/dialogs/DialogImage';
 
 import useStyles from '../posts-jss';
 
-const PendingPostShow = (props) => {
+const UserPostShow = (props) => {
   const classes = useStyles();
 
   const {
     match,
-    pending_post_current,
-    getPendingPostById,
-    loading_pending,
+    user_post_current,
+    getUserPostById,
+    loading_user_posts,
   } = props;
 
   useEffect(() => {
-    getPendingPostById(match.params.id);
+    getUserPostById(match.params.id);
 
     //eslint-disable-next-line
   }, []);
@@ -51,19 +51,20 @@ const PendingPostShow = (props) => {
     setImage(null);
   };
 
-  const { title, content, createdAt, images } = pending_post_current || {};
+  const { title, content, wilaya, city, createdAt, images } =
+    user_post_current || {};
 
   return (
     <div>
       <Helmet>
         <title>{`${WEBSITE_NAME} | ${
-          loading_pending ? 'Loading...' : title || 'Not found'
+          loading_user_posts ? 'Loading...' : title || 'Not found'
         }`}</title>
       </Helmet>
       <div className={`${classes.page} card-shadow text-center`}>
-        {loading_pending ? (
+        {loading_user_posts ? (
           <Spinner />
-        ) : !pending_post_current ? (
+        ) : !user_post_current ? (
           <div className='row'>
             <div className='col'>Not found</div>
           </div>
@@ -72,9 +73,9 @@ const PendingPostShow = (props) => {
             <div className='row'>
               <div className='col-12 col-lg-9'>
                 <h6 className='text-left'>
-                  <Link className='link-primary' to={`/pending`}>
-                    <FontAwesomeIcon className='mr-1' icon={faArrowLeft} />{' '}
-                    Pending posts
+                  <Link className='link-primary' to={`/posts`}>
+                    <FontAwesomeIcon className='mr-1' icon={faArrowLeft} /> Your
+                    posts
                   </Link>
                 </h6>
 
@@ -114,6 +115,16 @@ const PendingPostShow = (props) => {
                       )}
                     </div>
                   </div>
+
+                  <div className='contact-details text-center mt-4'>
+                    <FontAwesomeIcon
+                      className='icon mb-2'
+                      icon={faMapMarkerAlt}
+                    />
+                    <div className='location'>
+                      <h6>{`${wilaya}, ${city}`}</h6>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className='d-none d-lg-block col-12 col-lg-3'>
@@ -130,10 +141,10 @@ const PendingPostShow = (props) => {
 };
 
 const mapSateToProps = (state) => ({
-  pending_post_current: state.posts.pending_post_current,
-  loading_pending: state.posts.loading_pending,
+  user_post_current: state.posts.user_post_current,
+  loading_user_posts: state.posts.loading_user_posts,
 });
 
 export default connect(mapSateToProps, {
-  getPendingPostById,
-})(PendingPostShow);
+  getUserPostById,
+})(UserPostShow);
