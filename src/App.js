@@ -16,8 +16,10 @@ import Home from './components/pages/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Profile from './components/pages/Profile';
+import AddRequest from './components/pages/posts/requests/AddRequest';
 import RequestsPage from './components/pages/posts/requests/RequestsPage';
 import RequestShow from './components/pages/posts/requests/RequestShow';
+import AddDonation from './components/pages/posts/donations/AddDonation';
 import DonationsPage from './components/pages/posts/donations/DonationsPage';
 import DonationShow from './components/pages/posts/donations/DonationShow';
 import BloodDonors from './components/pages/blood/BloodDonors';
@@ -48,8 +50,14 @@ function App() {
               <Route exact path='/register' component={Register} />
               <PrivateRoute exact path='/profile' component={Profile} />
 
+              <PrivateRoute exact path='/requests/add' component={AddRequest} />
               <Route exact path='/requests' component={RequestsPage} />
               <Route exact path='/requests/:id' component={RequestShow} />
+              <PrivateRoute
+                exact
+                path='/donations/add'
+                component={AddDonation}
+              />
               <Route exact path='/donations' component={DonationsPage} />
               <Route exact path='/donations/:id' component={DonationShow} />
 

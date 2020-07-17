@@ -1,4 +1,5 @@
 import {
+  ADD_POST,
   GET_REQUESTS,
   GET_REQUEST_BY_ID,
   GET_CATEGORIES,
@@ -10,8 +11,10 @@ import {
   DELETE_POST_BY_ADMIN,
   GET_USER_POSTS,
   GET_USER_POST_BY_ID,
+  ADD_POST_ERROR,
   POST_ERROR,
   CATEGORIES_ERROR,
+  SET_LOADING_ADD_POST,
   SET_LOADING_POSTS,
   SET_LOADING_CATEGORIES,
   SET_LOADING_PENDING_POSTS,
@@ -32,14 +35,21 @@ const initialState = {
   user_post_current: null,
   categories: null,
   loading: false,
+  loading_add_post: false,
   loading_categories: false,
   loading_pending_posts: false,
-  loading_user_posts: true,
+  loading_user_posts: false,
   error: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ADD_POST:
+      return {
+        ...state,
+        loading_add_post: false,
+      };
+
     case GET_REQUESTS:
       return {
         ...state,
@@ -115,6 +125,13 @@ export default (state = initialState, action) => {
         loading_categories: false,
       };
 
+    case ADD_POST_ERROR:
+      return {
+        ...state,
+        loading_add_post: false,
+        error: action.payload,
+      };
+
     case POST_ERROR:
       return {
         ...state,
@@ -141,6 +158,12 @@ export default (state = initialState, action) => {
         ...state,
         loading_user_posts: false,
         error: action.payload,
+      };
+
+    case SET_LOADING_ADD_POST:
+      return {
+        ...state,
+        loading_add_post: true,
       };
 
     case SET_LOADING_POSTS:

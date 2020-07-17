@@ -165,7 +165,7 @@ const DonationShow = (props) => {
                   </p>
 
                   <div className='pictures mt-4'>
-                    <div className='row justify-content-center'>
+                    <div className='row justify-content-center align-items-center'>
                       {images !== null && images.length > 0 ? (
                         images.map((image) => (
                           <div

@@ -118,9 +118,21 @@ const useStyles = createUseStyles({
       },
     },
     '& .add-form': {
+      maxWidth: '520px',
       '& .input-text': {
         ...INPUT_TEXT,
         width: '100%',
+      },
+      '& [type="file"]': {
+        display: 'none',
+        '& + label': {
+          fontWeight: 600,
+          background: colors['text-gray-100'],
+          padding: '15px 30px',
+          '&:hover': {
+            background: colors['text-gray-300'],
+          },
+        },
       },
     },
     '&.user-posts': {

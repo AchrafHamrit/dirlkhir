@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import {
+  ADD_POST,
   GET_REQUESTS,
   GET_REQUEST_BY_ID,
   GET_CATEGORIES,
@@ -12,8 +13,10 @@ import {
   DELETE_POST_BY_ADMIN,
   GET_USER_POSTS,
   GET_USER_POST_BY_ID,
+  ADD_POST_ERROR,
   POST_ERROR,
   CATEGORIES_ERROR,
+  SET_LOADING_ADD_POST,
   SET_LOADING_POSTS,
   SET_LOADING_CATEGORIES,
   SET_LOADING_PENDING_POSTS,
@@ -24,6 +27,31 @@ import {
 } from '../types';
 
 import { URL as Api } from './api';
+
+// Add Post
+export const addPost = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  };
+  try {
+    dispatch(setLoadingAddPost());
+
+    const res = await axios.post(Api + `/posts`, formData, config);
+
+    dispatch({
+      type: ADD_POST,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: ADD_POST_ERROR,
+      payload: error.response?.msg,
+    });
+  }
+};
 
 // Get requests
 export const getRequests = (keywords, category, wilaya, city) => async (
@@ -227,6 +255,13 @@ export const getUserPostById = (id) => async (dispatch) => {
       payload: error.response.msg,
     });
   }
+};
+
+// Set loading add post to true
+export const setLoadingAddPost = () => {
+  return {
+    type: SET_LOADING_ADD_POST,
+  };
 };
 
 // Set loading posts to true
