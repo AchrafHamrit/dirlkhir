@@ -18,6 +18,8 @@ import Register from './components/auth/Register';
 import Profile from './components/pages/Profile';
 import RequestsPage from './components/pages/posts/requests/RequestsPage';
 import RequestShow from './components/pages/posts/requests/RequestShow';
+import DonationsPage from './components/pages/posts/donations/DonationsPage';
+import DonationShow from './components/pages/posts/donations/DonationShow';
 import MessagesShow from './components/pages/messages/MessagesShow';
 import MessagesPage from './components/pages/messages/MessagesPage';
 
@@ -42,6 +44,8 @@ function App() {
 
               <Route exact path='/requests' component={RequestsPage} />
               <Route exact path='/requests/:id' component={RequestShow} />
+              <Route exact path='/donations' component={DonationsPage} />
+              <Route exact path='/donations/:id' component={DonationShow} />
 
               <PrivateRoute
                 exact

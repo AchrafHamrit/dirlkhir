@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
 // Actions
-import { getConversations } from '../../../redux/actions/messageActions';
+import {
+  getConversations,
+  clearErrors,
+} from '../../../redux/actions/messageActions';
+import { setAlert } from '../../../redux/actions/alertActions';
 
 // Utils
 import { WEBSITE_NAME } from '../../../utils/websiteData';
@@ -17,13 +21,29 @@ import useStyles from './messages-jss';
 const MessagesPage = (props) => {
   const classes = useStyles();
 
-  const { conversations, loading, error, getConversations } = props;
+  const {
+    conversations,
+    loading,
+    error,
+    getConversations,
+    clearErrors,
+    setAlert,
+  } = props;
 
   useEffect(() => {
     getConversations();
 
     //eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (error) {
+      setAlert(error);
+      clearErrors();
+    }
+
+    //eslint-disable-next-line
+  }, [error]);
 
   return (
     <>
@@ -78,4 +98,6 @@ const mapSateToProps = (state) => ({
 
 export default connect(mapSateToProps, {
   getConversations,
+  clearErrors,
+  setAlert,
 })(MessagesPage);

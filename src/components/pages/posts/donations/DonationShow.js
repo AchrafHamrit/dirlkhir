@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 // Actions
-import { getRequestById } from '../../../../redux/actions/postActions';
+import { getDonationById } from '../../../../redux/actions/postActions';
 import {
   getUserPhone,
   clearUserPhone,
@@ -31,14 +31,14 @@ import DialogImage from '../../../layout/dialogs/DialogImage';
 
 import useStyles from '../posts-jss';
 
-const RequestShow = (props) => {
+const DonationShow = (props) => {
   const classes = useStyles();
 
   const {
     match,
     isAuthenticated,
-    request,
-    getRequestById,
+    donation,
+    getDonationById,
     user_phone,
     getUserPhone,
     clearUserPhone,
@@ -51,7 +51,7 @@ const RequestShow = (props) => {
   } = props;
 
   useEffect(() => {
-    getRequestById(match.params.id);
+    getDonationById(match.params.id);
 
     //eslint-disable-next-line
   }, []);
@@ -68,7 +68,7 @@ const RequestShow = (props) => {
   const [showPhone, setShowPhone] = useState(false);
 
   const handleShowPhone = () => {
-    getUserPhone(request.user_id);
+    getUserPhone(donation.user_id);
   };
 
   const handleHidePhone = () => {
@@ -90,9 +90,9 @@ const RequestShow = (props) => {
 
   const sendMessageHandle = async () => {
     if (!message) return;
-    if (request.user_id === null) return;
+    if (donation.user_id === null) return;
     await sendMessage({
-      user_Reciever: request.user_id,
+      user_Reciever: donation.user_id,
       content: message,
     });
     if (!error_send) {
@@ -122,7 +122,7 @@ const RequestShow = (props) => {
     setImage(null);
   };
 
-  const { title, content, wilaya, city, createdAt, images } = request || {};
+  const { title, content, wilaya, city, createdAt, images } = donation || {};
 
   return (
     <div>
@@ -134,7 +134,7 @@ const RequestShow = (props) => {
       <div className={`${classes.page} card-shadow text-center`}>
         {loading ? (
           <Spinner />
-        ) : !request ? (
+        ) : !donation ? (
           <div className='row'>
             <div className='col'>Not found</div>
           </div>
@@ -143,9 +143,9 @@ const RequestShow = (props) => {
             <div className='row'>
               <div className='col-12 col-lg-9'>
                 <h6 className='text-left'>
-                  <Link className='link-primary' to={`/requests`}>
+                  <Link className='link-primary' to={`/donations`}>
                     <FontAwesomeIcon className='mr-1' icon={faArrowLeft} />{' '}
-                    Requests
+                    Donations
                   </Link>
                 </h6>
 
@@ -251,7 +251,7 @@ const RequestShow = (props) => {
 
 const mapSateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  request: state.posts.request,
+  donation: state.posts.donation,
   loading: state.posts.loading,
   user_phone: state.messages.user_phone,
   loading_phone: state.messages.loading_phone,
@@ -260,8 +260,8 @@ const mapSateToProps = (state) => ({
 });
 
 export default connect(mapSateToProps, {
-  getRequestById,
+  getDonationById,
   getUserPhone,
   clearUserPhone,
   sendMessage,
-})(RequestShow);
+})(DonationShow);
