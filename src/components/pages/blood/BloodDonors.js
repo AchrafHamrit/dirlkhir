@@ -29,10 +29,13 @@ const BloodDonors = (props) => {
   const {
     wilayas,
     donors,
+    error,
     loading_states,
     loading,
     getStates,
     getBloodDonors,
+    clearErrors,
+    setAlert,
   } = props;
 
   const [post_search, setSearch] = useState({
@@ -48,6 +51,15 @@ const BloodDonors = (props) => {
 
     //eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (error) {
+      setAlert(error);
+      clearErrors();
+    }
+
+    // eslint-disable-next-line
+  }, [error]);
 
   const blood_types = [
     { id: '1', code: 'A+' },
@@ -168,7 +180,9 @@ const BloodDonors = (props) => {
         <div className='content mt-5'>
           <div className='row'>
             <div className='col-12 col-lg-9'>
-              <h6 className='text-left'>Donors ({3})</h6>
+              <h6 className='text-left'>
+                Donors ({donors ? donors.length : 0})
+              </h6>
               {donors !== null && !loading ? (
                 <div className='donors mt-3'>
                   {donors.length < 1 ? (
@@ -205,6 +219,7 @@ const BloodDonors = (props) => {
 const mapSateToProps = (state) => ({
   donors: state.blood.donors,
   loading: state.blood.loading,
+  error: state.blood.error,
   wilayas: state.locations.states,
   loading_states: state.locations.loading_states,
 });
