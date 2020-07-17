@@ -23,9 +23,11 @@ import DonationShow from './components/pages/posts/donations/DonationShow';
 import BloodDonors from './components/pages/blood/BloodDonors';
 import MessagesShow from './components/pages/messages/MessagesShow';
 import MessagesPage from './components/pages/messages/MessagesPage';
+import PendingPosts from './components/pages/posts/pending/PendingPosts';
 
 // Routes
 import PrivateRoute from './components/routing/PrivateRoute';
+import AdminRoute from './components/routing/AdminRoute';
 
 import './App.css';
 
@@ -56,6 +58,8 @@ function App() {
                 component={MessagesShow}
               />
               <PrivateRoute exact path='/messages' component={MessagesPage} />
+
+              <AdminRoute exact path='/pending' component={PendingPosts} />
 
               <Route component={Home} />
             </Switch>
