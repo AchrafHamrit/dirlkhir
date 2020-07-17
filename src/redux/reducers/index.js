@@ -5,6 +5,7 @@ import alertReducer from './alertReducer';
 import locationReducer from './locationReducer';
 import postReducer from './postReducer';
 import messageReducer from './messageReducer';
+import bloodReducer from './bloodReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -12,4 +13,5 @@ export default combineReducers({
   locations: locationReducer,
   posts: postReducer,
   messages: messageReducer,
+  blood: bloodReducer,
 });

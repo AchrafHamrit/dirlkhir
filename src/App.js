@@ -20,6 +20,7 @@ import RequestsPage from './components/pages/posts/requests/RequestsPage';
 import RequestShow from './components/pages/posts/requests/RequestShow';
 import DonationsPage from './components/pages/posts/donations/DonationsPage';
 import DonationShow from './components/pages/posts/donations/DonationShow';
+import BloodDonors from './components/pages/blood/BloodDonors';
 import MessagesShow from './components/pages/messages/MessagesShow';
 import MessagesPage from './components/pages/messages/MessagesPage';
 
@@ -46,6 +47,8 @@ function App() {
               <Route exact path='/requests/:id' component={RequestShow} />
               <Route exact path='/donations' component={DonationsPage} />
               <Route exact path='/donations/:id' component={DonationShow} />
+
+              <Route exact path='/blood' component={BloodDonors} />
 
               <PrivateRoute
                 exact

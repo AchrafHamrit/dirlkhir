@@ -12,9 +12,7 @@ import {
   SET_LOADING_PROFILE,
   UPDATE_PROFILE,
   UPDATE_PASSWORD,
-  GET_BLOOD_DONORS,
   PROFILE_ERROR,
-  BLOOD_DONORS_ERROR,
 } from '../types';
 
 const initialState = {
