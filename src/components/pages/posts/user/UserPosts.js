@@ -33,7 +33,7 @@ const UserPosts = (props) => {
       </Helmet>
       <div className={`${classes.page} user-posts card-shadow text-center`}>
         <h3 className='title'>Your posts</h3>
-        <h6 className='subtitle'>Here some people need drugs or equipments</h6>
+        <h6 className='subtitle'>Requests or donations you have post</h6>
 
         {user_posts !== null && !loading_user_posts ? (
           user_posts.length < 1 ? (

@@ -104,7 +104,7 @@ const BloodDonors = (props) => {
       </Helmet>
       <div className={`${classes.page} card-shadow text-center`}>
         <h3 className='title'>Blood Donors</h3>
-        <h6 className='subtitle'>Here some people need drugs or equipments</h6>
+        <h6 className='subtitle'>Match patients with suitable blood donors</h6>
         <div className='search-form card-shadow mt-4 pt-4'>
           <div className='d-lg-none mb-1'>
             <a

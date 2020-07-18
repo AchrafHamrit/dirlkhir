@@ -235,7 +235,7 @@ export const getUserPosts = () => async (dispatch) => {
     console.log(error);
     dispatch({
       type: USER_POSTS_ERROR,
-      payload: error.response.msg,
+      payload: error.response?.msg,
     });
   }
 };
@@ -252,7 +252,7 @@ export const getUserPostById = (id) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: USER_POSTS_ERROR,
-      payload: error.response.msg,
+      payload: error.response?.msg,
     });
   }
 };

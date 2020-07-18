@@ -135,7 +135,9 @@ const AddRequest = (props) => {
       </Helmet>
       <div className={`${classes.page} card-shadow text-center`}>
         <h3 className='title'>Add a Request</h3>
-        <h6 className='subtitle'>Start helping or getting help.</h6>
+        <h6 className='subtitle'>
+          Ask for help from people regardless of your location
+        </h6>
 
         <div className='row'>
           <div className='col'>

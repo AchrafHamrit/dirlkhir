@@ -91,7 +91,7 @@ const Donations = (props) => {
 
       <div className={`${classes.page} card-shadow text-center`}>
         <h3 className='title'>Donations</h3>
-        <h6 className='subtitle'>Here some people need drugs or equipments</h6>
+        <h6 className='subtitle'>Find people who can help you</h6>
 
         <div className='row'>
           <div className='col-12'>
@@ -100,7 +100,7 @@ const Donations = (props) => {
               className='button-primary d-inline-block mt-2'
             >
               <FontAwesomeIcon className='mr-2' icon={faPlusCircle} />
-              Add a Request
+              Add a Donation
             </Link>
           </div>
         </div>

@@ -68,11 +68,11 @@ export const register = (formData) => async (dispatch) => {
 
     dispatch(loadUser());
   } catch (error) {
-    console.log(error.response.data);
+    console.log(error);
 
     dispatch({
       type: REGISTER_FAIL,
-      payload: error.response.data.msg || error.response.data,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -101,7 +101,7 @@ export const login = (formData) => async (dispatch) => {
 
     dispatch({
       type: LOGIN_FAIL,
-      payload: error.response.data.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };

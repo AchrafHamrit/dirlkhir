@@ -55,7 +55,7 @@ const PendingPosts = (props) => {
       </Helmet>
       <div className={`${classes.page} card-shadow text-center`}>
         <h3 className='title'>Pending posts</h3>
-        <h6 className='subtitle'>Here some people need drugs or equipments</h6>
+        <h6 className='subtitle'>Manage the posts that need your approval</h6>
 
         {pending_posts !== null && !loading_pending ? (
           pending_posts.length < 1 ? (

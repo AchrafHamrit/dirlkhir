@@ -91,7 +91,9 @@ const Requests = (props) => {
 
       <div className={`${classes.page} card-shadow text-center`}>
         <h3 className='title'>Requests</h3>
-        <h6 className='subtitle'>Here some people need drugs or equipments</h6>
+        <h6 className='subtitle'>
+          Find people in need of money, tools or resources
+        </h6>
 
         <div className='row'>
           <div className='col-12'>

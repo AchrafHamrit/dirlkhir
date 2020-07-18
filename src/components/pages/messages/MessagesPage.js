@@ -13,6 +13,7 @@ import { setAlert } from '../../../redux/actions/alertActions';
 import { WEBSITE_NAME } from '../../../utils/websiteData';
 
 // Components
+import Spinner from '../../layout/Spinner';
 import Sidebar from '../../layout/Sidebar';
 import MessageItem from './MessageItem';
 
@@ -66,7 +67,6 @@ const MessagesPage = (props) => {
                 {conversations.length < 1 ? (
                   <div className='no-requests mt-5'>
                     <h5>No messages!</h5>
-                    <p>No messages!</p>
                   </div>
                 ) : (
                   conversations.map((conversation) => (
@@ -78,7 +78,9 @@ const MessagesPage = (props) => {
                 )}
               </div>
             ) : (
-              <div className='content text-center mt-5'>Spinner</div>
+              <div className='content text-center mt-5'>
+                <Spinner />
+              </div>
             )}
           </div>
           <div className='d-none d-lg-block col-12 col-lg-3'>

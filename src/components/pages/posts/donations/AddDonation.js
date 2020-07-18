@@ -135,7 +135,7 @@ const AddDonation = (props) => {
       </Helmet>
       <div className={`${classes.page} card-shadow text-center`}>
         <h3 className='title'>Add a Donation</h3>
-        <h6 className='subtitle'>Start helping or getting help.</h6>
+        <h6 className='subtitle'>Your donation can help someone</h6>
 
         <div className='row'>
           <div className='col'>
