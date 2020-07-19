@@ -27,7 +27,7 @@ export const getStates = () => async (dispatch) => {
     console.log(error);
     dispatch({
       type: LOCATION_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -47,7 +47,7 @@ export const getStateCities = (stateId) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: LOCATION_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };

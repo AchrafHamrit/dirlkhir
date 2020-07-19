@@ -167,7 +167,7 @@ export const updateProfile = (formData) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: PROFILE_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -190,7 +190,7 @@ export const updatePassword = (formData) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: PROFILE_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };

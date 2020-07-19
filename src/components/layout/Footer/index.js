@@ -1,11 +1,7 @@
 import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFacebookF,
-  faInstagram,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import useStyles from './footer-jss';
 
@@ -18,17 +14,15 @@ const Footer = () => {
         <div className='row'>
           <div className='col text-center'>
             <div className='social'>
-              <a href='#!' className='mr-3'>
-                <FontAwesomeIcon className='icon' icon={faTwitter} />
-              </a>
-              <a href='#!' className='mr-3'>
-                <FontAwesomeIcon className='icon' icon={faFacebookF} />
-              </a>
-              <a href='#!'>
-                <FontAwesomeIcon className='icon' icon={faInstagram} />
+              <a
+                href='https://github.com/AchrafHamrit/dirlkhir'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='mr-3'
+              >
+                <FontAwesomeIcon className='icon' icon={faGithub} />
               </a>
             </div>
-
             <div className='message mt-3 mx-auto'>
               <p>
                 As part of our common humanity, we could use some of our

@@ -48,7 +48,7 @@ export const addPost = (formData) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: ADD_POST_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -73,7 +73,7 @@ export const getRequests = (keywords, category, wilaya, city) => async (
     console.log(error);
     dispatch({
       type: POST_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -90,7 +90,7 @@ export const getRequestById = (id) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: POST_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -115,7 +115,7 @@ export const getDonations = (keywords, category, wilaya, city) => async (
     console.log(error);
     dispatch({
       type: POST_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -132,7 +132,7 @@ export const getDonationById = (id) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: POST_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -149,7 +149,7 @@ export const getCategories = () => async (dispatch) => {
     console.log(error);
     dispatch({
       type: CATEGORIES_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -165,7 +165,7 @@ export const getPendingPosts = () => async (dispatch) => {
     console.log(error);
     dispatch({
       type: PENDING_POST_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -182,7 +182,7 @@ export const getPendingPostById = (id) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: PENDING_POST_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -200,7 +200,7 @@ export const approvePost = (id) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: PENDING_POST_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -218,7 +218,7 @@ export const declinePost = (id) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: PENDING_POST_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -235,7 +235,7 @@ export const getUserPosts = () => async (dispatch) => {
     console.log(error);
     dispatch({
       type: USER_POSTS_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -252,7 +252,7 @@ export const getUserPostById = (id) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: USER_POSTS_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };

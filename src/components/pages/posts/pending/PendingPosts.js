@@ -10,7 +10,9 @@ import {
   getPendingPosts,
   approvePost,
   declinePost,
+  clearErrors,
 } from '../../../../redux/actions/postActions';
+import { setAlert } from '../../../../redux/actions/alertActions';
 
 // Utils
 import { WEBSITE_NAME } from '../../../../utils/websiteData';
@@ -27,9 +29,12 @@ const PendingPosts = (props) => {
   const {
     pending_posts,
     loading_pending,
+    error,
     getPendingPosts,
     approvePost,
     declinePost,
+    clearErrors,
+    setAlert,
   } = props;
 
   useEffect(() => {
@@ -37,6 +42,15 @@ const PendingPosts = (props) => {
 
     //eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (error) {
+      setAlert(error);
+      clearErrors();
+    }
+
+    //eslint-disable-next-line
+  }, [error]);
 
   const approvePostHandle = async (id) => {
     await approvePost(id);
@@ -107,12 +121,15 @@ const PendingPosts = (props) => {
 const mapSateToProps = (state) => ({
   pending_posts: state.posts.pending_posts,
   loading_pending: state.posts.loading_pending,
+  error: state.posts.error,
 });
 
 export default connect(mapSateToProps, {
   getPendingPosts,
   approvePost,
   declinePost,
+  clearErrors,
+  setAlert,
 })(PendingPosts);
 
 const PendingPostItem = (props) => {

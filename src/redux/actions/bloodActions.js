@@ -26,7 +26,7 @@ export const getBloodDonors = (wilaya, blood_type) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: BLOOD_DONORS_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };

@@ -172,8 +172,6 @@ const Profile = (props) => {
       is_phone_hidden,
       is_sharing_blood,
     });
-
-    if (error) window.location.reload(false);
   };
 
   const onSubmitPassword = (e) => {

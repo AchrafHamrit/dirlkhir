@@ -11,11 +11,13 @@ const useStyles = createUseStyles({
       fontSize: '3rem',
       maxWidth: '450px',
     },
+
     '@media screen and (max-width: 576px)': {
       '& h1.title': {
         fontSize: '2rem',
       },
     },
+
     '& .paragraph': {
       color: colors['text-gray-600'],
       fontWeight: '500',
@@ -32,21 +34,8 @@ const useStyles = createUseStyles({
       fontWeight: '500',
       maxWidth: '250px',
       position: 'relative',
-      '& .brand': {
+      '& .bold': {
         fontWeight: '700',
-      },
-    },
-    '@media screen and (min-width: 575.98px)': {
-      '& h3.title': {
-        '&:after': {
-          content: '""',
-          position: 'absolute',
-          bottom: 13,
-          right: -70,
-          width: '50px',
-          display: 'inline',
-          borderTop: `3px solid ${colors['text-gray-400']}`,
-        },
       },
     },
 
@@ -59,6 +48,41 @@ const useStyles = createUseStyles({
         color: colors['text-gray-600'],
         fontWeight: '400',
         maxWidth: '300px',
+      },
+    },
+
+    '& .our-mission': {
+      '& .paragraph': {
+        fontSize: '1.1rem',
+      },
+    },
+
+    '@media screen and (min-width: 992px)': {
+      '& h3.title': {
+        '&:after': {
+          content: '""',
+          position: 'absolute',
+          bottom: 13,
+          width: '50px',
+          display: 'inline',
+          borderTop: `3px solid ${colors['text-gray-400']}`,
+        },
+      },
+
+      '& .features': {
+        '& h3.title': {
+          '&:after': {
+            right: -70,
+          },
+        },
+      },
+
+      '& .our-mission': {
+        '& h3.title': {
+          '&:after': {
+            right: 0,
+          },
+        },
       },
     },
   },

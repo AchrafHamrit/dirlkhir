@@ -28,7 +28,7 @@ export const getUserPhone = (id) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: GET_PHONE_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -44,7 +44,7 @@ export const getConversations = () => async (dispatch) => {
     console.log(error);
     dispatch({
       type: MESSAGE_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
@@ -60,7 +60,7 @@ export const getConversationById = (id) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: MESSAGE_ERROR,
-      payload: error.response?.msg || 'Error',
+      payload: error.response?.data?.msg || 'Error',
     });
   }
 };
@@ -82,7 +82,7 @@ export const sendMessage = (formData) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: SEND_MESSAGE_ERROR,
-      payload: error.response?.msg,
+      payload: error.response?.data?.msg,
     });
   }
 };
