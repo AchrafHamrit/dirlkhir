@@ -5,7 +5,7 @@
 
 ### Screenshots
 
-![Home Page](https://i.ibb.co/cJRNPnR/Dirlkhir-Donations-website.png =800x)
+[Home Page](https://i.ibb.co/cJRNPnR/Dirlkhir-Donations-website.png =800x)
 
 ![Request Page](https://i.ibb.co/09Yjx1D/Dirlkhir-I-need-a-blood-glucose-monitor.png =800x)
 
