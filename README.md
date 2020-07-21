@@ -6,9 +6,9 @@
 
 ### Screenshots
 
-![Home Page](./screenshots/home.png =800x)
+<div><img src="./screenshots/home.png" width="800" alt="Home Page"></div>
 
-![Request Page](./screenshots/request.png =800x)
+<div><img src="./screenshots/request.png" width="800" alt="Request Page"></div>
 
 **Live preview:** [Dirlkhir.social](https://dirlkhir.social/)
 
