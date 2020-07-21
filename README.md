@@ -1,13 +1,13 @@
 # Dirlkhir
 
-![Dirlkhir Logo](https://dirlkhir-app.herokuapp.com/static/media/logo.0af94f70.svg =250x)
+![Dirlkhir Logo](./screenshots/logo.svg =250x)
 **Dirlkhir** is a web application built using _ReactJs_ that can provide a service for sharing medical equipment and medicines between people.
 
 ### Screenshots
 
-![Home Page](https://i.ibb.co/cJRNPnR/Dirlkhir-Donations-website.png =800x)
+![Home Page](./screenshots/home.png =800x)
 
-![Request Page](https://i.ibb.co/09Yjx1D/Dirlkhir-I-need-a-blood-glucose-monitor.png =800x)
+![Request Page](./screenshots/request.png =800x)
 
 **Live preview:** [Dirlkhir.social](https://dirlkhir.social/)
 
