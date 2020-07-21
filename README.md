@@ -1,6 +1,6 @@
 # Dirlkhir
 
-![Dirlkhir Logo](/screenshots/logo.svg?raw=true)
+![Dirlkhir Logo](/screenshots/logo.svg?raw=true | width=250)
 **Dirlkhir** is a web application built using _ReactJs_ that can provide a service for sharing medical equipment and medicines between people.
 
 ### Screenshots
