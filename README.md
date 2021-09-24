@@ -11,7 +11,7 @@
 <div><img src="./screenshots/request.png" width="800" alt="Request Page"></div>
 <br>
 
-**Live preview:** [Dirlkhir.social](https://dirlkhir.social/)
+**Live preview:** [Dirlkhir.social](http://dirlkhir-app.herokuapp.com/)
 
 ### How to use
 
